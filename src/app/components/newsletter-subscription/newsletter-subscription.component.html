@@ -1,0 +1,25 @@
+<section class="m-auto max-w-lg my-10 px-6 text-center mt-2">
+  @if (!subscribed) {
+  <p class="text-2xl mb-5 text-gray-500">Sign up to our newsletter for the latest Angular Job Updates</p>
+  <form #newsletterForm="ngForm" (ngSubmit)="onSubmit()">
+    <input class="border rounded w-full py-2 px-3 mb-2" type="email" id="recipientEmail" name="recipientEmail"
+      [(ngModel)]="model.recipientEmail" #recipientEmail="ngModel" placeholder="Your Mail address" required />
+
+    <div *ngIf="recipientEmail.invalid && (recipientEmail.dirty || recipientEmail.touched)"
+      class="text-red-500 font-bold italic my-3">
+      <div *ngIf="recipientEmail.hasError('required')">
+        Email is required.
+      </div>
+    </div>
+
+    <button class="font-bold py-2 px-4 rounded-full w-full"
+      [ngClass]="{'bg-fuchsia-500 hover:bg-fuchsia-600 text-white focus:outline-none focus:shadow-outline': newsletterForm.valid, 'bg-gray-300 cursor-not-allowed opacity-50': !newsletterForm.valid}"
+      type="submit" [disabled]="!newsletterForm.valid">
+      Subscribe
+    </button>
+  </form>
+  }
+  @else {
+  <p class="text-2xl mb-5 text-gray-500">Thank you for your subscription!</p>
+  }
+</section>
