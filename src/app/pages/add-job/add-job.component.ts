@@ -3,8 +3,8 @@ import { Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JobsService } from '../../services/jobs.service';
-import { Job } from '../../types/job.type';
 import { ToastrService } from 'ngx-toastr';
+import { Job } from '../../interfaces/job';
 
 @Component({
   selector: 'app-add-job',

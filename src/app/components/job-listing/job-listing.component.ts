@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, } from '@angular/core';
 import { NgIconsModule } from '@ng-icons/core';
-import { Job } from '../../types/job.type';
 import { RouterModule } from '@angular/router';
+import { Job } from '../../interfaces/job';
 
 @Component({
   selector: 'app-job-listing',

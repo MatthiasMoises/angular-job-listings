@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../services/jobs.service';
-import { Job } from '../../types/job.type';
 import { ToastrService } from 'ngx-toastr';
+import { Job } from '../../interfaces/job';
 
 @Component({
   selector: 'app-edit-job',

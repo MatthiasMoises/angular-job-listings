@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NgIconsModule } from '@ng-icons/core';
 import { ActivatedRoute } from '@angular/router';
-import { Job } from '../../types/job.type';
 import { JobsService } from '../../services/jobs.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { Job } from '../../interfaces/job';
 
 @Component({
   selector: 'app-job',
@@ -18,22 +18,17 @@ export class JobComponent implements OnInit {
   job!: Job;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private jobsService: JobsService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
-    const jobId = this.route.snapshot.paramMap.get('id')
-
-    if (jobId) {
-      this.jobsService.getJobById(jobId).subscribe(data => {
-        this.job = data
-      })
-    } else {
-      console.error('Invalid job ID')
-    }
+    console.log(this.activatedRoute.data)
+    this.activatedRoute.data.subscribe(({ job }) => {
+      this.job = job
+    })
   }
 
   onDeleteClick(jobId: string): void {
