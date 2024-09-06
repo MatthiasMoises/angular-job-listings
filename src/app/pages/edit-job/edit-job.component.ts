@@ -85,7 +85,11 @@ export class EditJobComponent implements OnInit {
   }
 
   onSubmit() {
-    this.jobsService.updateJob(this.jobId!, this.jobForm.value as Job).subscribe()
+    const jobData = this.jobForm.value as Job
+
+    jobData.creationDate = this.job.creationDate
+
+    this.jobsService.updateJob(this.jobId!, jobData).subscribe()
 
     this.toastr.success('Job updated successfully')
 

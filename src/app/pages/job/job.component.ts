@@ -4,13 +4,13 @@ import { NgIconsModule } from '@ng-icons/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../services/jobs.service';
 import { ToastrService } from 'ngx-toastr';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Job } from '../../interfaces/job';
 
 @Component({
   selector: 'app-job',
   standalone: true,
-  imports: [RouterModule, NgIconsModule, CommonModule],
+  imports: [RouterModule, NgIconsModule, CommonModule, DatePipe],
   templateUrl: './job.component.html',
   styleUrl: './job.component.css'
 })
@@ -25,7 +25,6 @@ export class JobComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.data)
     this.activatedRoute.data.subscribe(({ job }) => {
       this.job = job
     })

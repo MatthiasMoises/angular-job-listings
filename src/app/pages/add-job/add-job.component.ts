@@ -67,7 +67,11 @@ export class AddJobComponent {
   }
 
   onSubmit() {
-    this.jobsService.addJob(this.jobForm.value as Job).subscribe()
+    const jobData = this.jobForm.value as Job
+
+    jobData.creationDate = new Date()
+
+    this.jobsService.addJob(jobData).subscribe()
 
     this.toastr.success('Job added successfully')
 

@@ -7,5 +7,6 @@ export interface Job {
   description: string;
   location: string;
   salary: string;
-  company: Company
+  company: Company;
+  creationDate: Date;
 }

@@ -2,11 +2,12 @@ import { Component, Input, OnInit, } from '@angular/core';
 import { NgIconsModule } from '@ng-icons/core';
 import { RouterModule } from '@angular/router';
 import { Job } from '../../interfaces/job';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-job-listing',
   standalone: true,
-  imports: [RouterModule, NgIconsModule],
+  imports: [RouterModule, NgIconsModule, DatePipe],
   templateUrl: './job-listing.component.html',
   styleUrl: './job-listing.component.css'
 })

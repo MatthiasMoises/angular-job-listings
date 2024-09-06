@@ -19,6 +19,9 @@
             <ng-icon name="matPlace" class="text-orange-400 mr-1" />
             <p class="text-orange-400">{{job.location}}</p>
           </div>
+          <div class="text-gray-400 text-right">
+            <i>Posted on: {{job.creationDate | date }}</i>
+          </div>
         </div>
 
         <div class="bg-white p-6 rounded-lg shadow-md mt-6">
