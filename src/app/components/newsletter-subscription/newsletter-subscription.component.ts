@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NewsletterService } from '../../services/newsletter.service';
 import { CommonModule } from '@angular/common';
+import { NewsletterService } from '../../services/newsletter.service';
 
 @Component({
   selector: 'app-newsletter-subscription',
@@ -11,17 +11,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './newsletter-subscription.component.css'
 })
 export class NewsletterSubscriptionComponent {
-  model = {
+  model = signal({
     recipientEmail: ''
-  }
-  subscribed: boolean = false
+  })
+  subscribed = signal(false)
 
   constructor(private newsletterService: NewsletterService) { }
 
   onSubmit() {
     this.newsletterService.subscribeUser().subscribe(data => {
-      this.subscribed = data
-      this.model.recipientEmail = ''
+      this.subscribed.set(data)
+      this.model.set({ recipientEmail: '' })
     })
   }
 }

@@ -1,9 +1,9 @@
 <section class="m-auto max-w-lg my-10 px-6 text-center mt-2">
-  @if (!subscribed) {
+  @if (!subscribed()) {
   <p class="text-2xl mb-5 text-gray-500">Sign up to our newsletter for the latest Angular Job Updates</p>
   <form #newsletterForm="ngForm" (ngSubmit)="onSubmit()">
     <input class="border rounded w-full py-2 px-3 focus:border-gray-500 focus:outline-none focus:ring-0" type="email"
-      id="recipientEmail" name="recipientEmail" [(ngModel)]="model.recipientEmail" #recipientEmail="ngModel"
+      id="recipientEmail" name="recipientEmail" [(ngModel)]="model().recipientEmail" #recipientEmail="ngModel"
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Your Mail address" required />
 
     <div *ngIf="recipientEmail.invalid && (recipientEmail.dirty || recipientEmail.touched)"
