@@ -42,7 +42,7 @@ export class EditJobComponent implements OnInit {
           company: new FormGroup({
             name: new FormControl(this.job.company.name, [Validators.required]),
             description: new FormControl(this.job.company.description, [Validators.required, Validators.minLength(10)]),
-            contactEmail: new FormControl(this.job.company.contactEmail, [Validators.required]),
+            contactEmail: new FormControl(this.job.company.contactEmail, [Validators.required, Validators.email]),
             contactPhone: new FormControl(this.job.company.contactPhone),
           })
         })

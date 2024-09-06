@@ -23,7 +23,7 @@ export class AddJobComponent {
     company: new FormGroup({
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      contactEmail: new FormControl('', [Validators.required]),
+      contactEmail: new FormControl('', [Validators.required, Validators.email]),
       contactPhone: new FormControl(''),
     })
   })

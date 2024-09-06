@@ -83,48 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "title": "Test Job with updated stuff to be better",
-      "type": "Full-Time",
-      "description": "asdsgsdfsadsdsad sdfdadasdasdas sfadasdasdas",
-      "location": "Jobcity",
-      "salary": "$100K - $125K",
-      "company": {
-        "name": "A Company",
-        "description": "Company does stuff",
-        "contactEmail": "test@test.com",
-        "contactPhone": "555-12345"
-      },
-      "id": "4678"
-    },
-    {
-      "title": "Super Test Job",
-      "type": "Remote",
-      "description": "sadasdad fdkadflkasld sdfjkadasd sdlfdföasdlsadas",
-      "location": "Los Angeles",
-      "salary": "$150K - $175K",
-      "company": {
-        "name": "Butterbread Co",
-        "description": "Sell Butterbread and more stuff",
-        "contactPhone": "test@test.com",
-        "contactEmail": "555-3243434"
-      },
-      "id": "7a9c"
-    },
-    {
-      "id": "2e85",
-      "title": "Again a super new test job",
-      "type": "Internship",
-      "description": "akasdkösfkladj dsklasdlsdfölkgsfjklads sdfjlasdkasd\ndsfksfjkadskladsk fdsjkladkasjkdas",
-      "location": "Hamburg",
-      "salary": "Over $200K",
-      "company": {
-        "name": "Fischback",
-        "description": "Sell smelly fish and stuff",
-        "contactEmail": "test@test.com",
-        "contactPhone": ""
-      }
     }
   ]
 }

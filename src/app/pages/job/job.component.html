@@ -56,9 +56,9 @@
             {{job.company.contactEmail}}
           </p>
 
-          <h3 class="text-xl">Contact Phone:</h3>
+          <h3 *ngIf="job.company.contactPhone" class="text-xl">Contact Phone:</h3>
 
-          <p class="my-2 bg-indigo-100 p-2 font-bold">{{job.company.contactPhone}}</p>
+          <p *ngIf="job.company.contactPhone" class="my-2 bg-indigo-100 p-2 font-bold">{{job.company.contactPhone}}</p>
         </div>
 
         <!-- Manage -->
