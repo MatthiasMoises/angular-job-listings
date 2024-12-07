@@ -3,11 +3,12 @@ import { NgIconsModule } from '@ng-icons/core';
 import { RouterModule } from '@angular/router';
 import { Job } from '../../interfaces/job';
 import { DatePipe } from '@angular/common';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 @Component({
   selector: 'app-job-listing',
   standalone: true,
-  imports: [RouterModule, NgIconsModule, DatePipe],
+  imports: [RouterModule, NgIconsModule, DatePipe, HighlightDirective],
   templateUrl: './job-listing.component.html',
   styleUrl: './job-listing.component.css'
 })

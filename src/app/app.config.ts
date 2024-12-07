@@ -8,6 +8,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { errorInterceptor } from './interceptors/error.interceptor';
+import { provideClientHydration, withI18nSupport } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,8 +17,9 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(NgIconsModule.withIcons({ matPlace, matWarning, matArrowBack })),
     provideAnimations(),
     provideToastr(),
+    provideClientHydration(withI18nSupport()),
     provideHttpClient(
       withInterceptors([errorInterceptor])
-    )
+    ), provideClientHydration()
   ]
 };
