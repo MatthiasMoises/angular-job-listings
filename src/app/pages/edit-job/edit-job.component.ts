@@ -5,6 +5,7 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../services/jobs.service';
 import { ToastrService } from 'ngx-toastr';
 import { Job } from '../../interfaces/job';
+import { LoggerService, LogLevel } from '../../services/logger.service';
 
 @Component({
   selector: 'app-edit-job',
@@ -22,7 +23,8 @@ export class EditJobComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private jobsService: JobsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private loggerService: LoggerService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +50,7 @@ export class EditJobComponent implements OnInit {
         })
       })
     } else {
-      console.error('Invalid job ID')
+      this.loggerService.writeToLog('Missing Job ID', LogLevel.ERROR)
     }
   }
 

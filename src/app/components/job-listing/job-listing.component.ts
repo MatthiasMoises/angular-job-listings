@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, signal, } from '@angular/core';
+import { Component, OnInit, signal, input } from '@angular/core';
 import { NgIconsModule } from '@ng-icons/core';
 import { RouterModule } from '@angular/router';
 import { Job } from '../../interfaces/job';
@@ -13,8 +13,7 @@ import { HighlightDirective } from '../../directives/highlight.directive';
   styleUrl: './job-listing.component.css'
 })
 export class JobListingComponent implements OnInit {
-  @Input()
-  job!: Job;
+  job = input.required<Job>()
 
   description = signal<string>('')
   showFullDescription = signal<boolean>(false)
@@ -29,11 +28,11 @@ export class JobListingComponent implements OnInit {
     if (!this.showFullDescription()) {
       this.truncateDescription()
     } else {
-      this.description.set(this.job.description)
+      this.description.set(this.job().description)
     }
   }
 
   private truncateDescription(characters = 90, start = 0) {
-    this.description.set(this.job.description.substring(start, characters) + '...')
+    this.description.set(this.job().description.substring(start, characters) + '...')
   }
 }

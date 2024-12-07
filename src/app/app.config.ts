@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { NgIconsModule } from '@ng-icons/core';
 import { matArrowBack, matPlace, matWarning } from '@ng-icons/material-icons/baseline';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { errorInterceptor } from './interceptors/error.interceptor';
@@ -17,9 +17,10 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(NgIconsModule.withIcons({ matPlace, matWarning, matArrowBack })),
     provideAnimations(),
     provideToastr(),
-    provideClientHydration(withI18nSupport()),
     provideHttpClient(
-      withInterceptors([errorInterceptor])
-    ), provideClientHydration()
+      withInterceptors([errorInterceptor]),
+      withFetch(),
+    ),
+    provideClientHydration(withI18nSupport())
   ]
 };

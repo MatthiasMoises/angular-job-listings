@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './hero.component.css'
 })
 export class HeroComponent {
-  @Input() title: string = 'Become a Angular Dev'
-  @Input() subtitle: string = 'Find the Angular Job that fits your skill set'
+  title = input<string>('Become a Angular Dev')
+  subtitle = input<string>('Find the Angular Job that fits your skill set')
 }

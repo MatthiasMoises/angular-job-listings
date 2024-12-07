@@ -8,6 +8,7 @@ export const routes: Routes = [
   { path: 'add-job', loadComponent: () => import('../app/pages/add-job/add-job.component').then(c => c.AddJobComponent) },
   { path: 'edit-job/:id', loadComponent: () => import('../app/pages/edit-job/edit-job.component').then(c => c.EditJobComponent) },
   { path: 'jobs/:id', loadComponent: () => import('../app/pages/job/job.component').then(c => c.JobComponent), resolve: { job: jobResolver } },
+  { path: 'about', loadComponent: () => import('../app/pages/about/about.component').then(c => c.AboutComponent) },
   { path: 'error', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent },
 ];
