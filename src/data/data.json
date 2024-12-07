@@ -105,5 +105,15 @@
       "creationDate": "2024-09-06T18:45:33.037Z",
       "id": "852e"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@jobboard.com",
+      "password": "password",
+      "role": "admin",
+      "creationDate": "2024-09-06T18:45:33.037Z"
+    }
   ]
 }

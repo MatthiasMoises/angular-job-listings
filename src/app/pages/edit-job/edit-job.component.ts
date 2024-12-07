@@ -6,6 +6,8 @@ import { JobsService } from '../../services/jobs.service';
 import { ToastrService } from 'ngx-toastr';
 import { Job } from '../../interfaces/job';
 import { LoggerService, LogLevel } from '../../services/logger.service';
+import { CanDeactivateType } from '../../interfaces/can-deactivate';
+import { takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-edit-job',
@@ -18,6 +20,8 @@ export class EditJobComponent implements OnInit {
   job!: Job
   jobForm: FormGroup = new FormGroup({})
   jobId: string | null = null
+
+  private unsavedChanges: boolean = false
 
   constructor(
     private route: ActivatedRoute,
@@ -47,6 +51,11 @@ export class EditJobComponent implements OnInit {
             contactEmail: new FormControl(this.job.company.contactEmail, [Validators.required, Validators.email]),
             contactPhone: new FormControl(this.job.company.contactPhone),
           })
+        })
+
+        // Check for form changes
+        this.jobForm.valueChanges.pipe(takeWhile(() => this.unsavedChanges === false)).subscribe(_ => {
+          this.unsavedChanges = true
         })
       })
     } else {
@@ -96,5 +105,16 @@ export class EditJobComponent implements OnInit {
     this.toastr.success('Job updated successfully')
 
     this.router.navigate(['/jobs'])
+  }
+
+  canDeactivate(): CanDeactivateType {
+    if (this.unsavedChanges) {
+      if (confirm("Do you really want to leave this site? Don't forget unsaved changes!")) {
+        return true
+      } else {
+        return false
+      }
+    }
+    return true
   }
 }

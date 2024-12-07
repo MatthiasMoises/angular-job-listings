@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JobsService } from '../../services/jobs.service';
 import { ToastrService } from 'ngx-toastr';
 import { Job } from '../../interfaces/job';
+import { CanDeactivateType } from '../../interfaces/can-deactivate';
+import { takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-add-job',
@@ -13,7 +15,7 @@ import { Job } from '../../interfaces/job';
   templateUrl: './add-job.component.html',
   styleUrl: './add-job.component.css'
 })
-export class AddJobComponent {
+export class AddJobComponent implements OnInit {
   jobForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
@@ -28,11 +30,20 @@ export class AddJobComponent {
     })
   })
 
+  private unsavedChanges: boolean = false
+
   constructor(
     private router: Router,
     private jobsService: JobsService,
     private toastr: ToastrService
   ) { }
+
+  ngOnInit(): void {
+    // Check for form changes
+    this.jobForm.valueChanges.pipe(takeWhile(() => this.unsavedChanges === false)).subscribe(_ => {
+      this.unsavedChanges = true
+    })
+  }
 
   get title() {
     return this.jobForm.get('title');
@@ -76,5 +87,16 @@ export class AddJobComponent {
     this.toastr.success('Job added successfully')
 
     this.router.navigate(['/jobs'])
+  }
+
+  canDeactivate(): CanDeactivateType {
+    if (this.unsavedChanges) {
+      if (confirm("Do you really want to leave this site? Don't forget unsaved changes!")) {
+        return true
+      } else {
+        return false
+      }
+    }
+    return true
   }
 }
