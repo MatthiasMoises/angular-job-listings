@@ -1,28 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NgIconsModule } from '@ng-icons/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobsService } from '../../services/jobs.service';
 import { ToastrService } from 'ngx-toastr';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, NgIf } from '@angular/common';
 import { Job } from '../../interfaces/job';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-job',
   standalone: true,
-  imports: [RouterModule, NgIconsModule, CommonModule, DatePipe],
+  imports: [RouterModule, NgIconsModule, CommonModule, DatePipe, NgIf],
   templateUrl: './job.component.html',
   styleUrl: './job.component.css'
 })
 export class JobComponent implements OnInit {
   job!: Job;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private jobsService: JobsService,
-    private toastr: ToastrService
-  ) { }
+  private readonly activatedRoute = inject(ActivatedRoute)
+  private readonly router = inject(Router)
+  private readonly jobsService = inject(JobsService)
+  private readonly toastr = inject(ToastrService)
+  authService = inject(AuthService)
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ job }) => {
