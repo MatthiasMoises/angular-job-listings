@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { jobResolver } from './resolvers/job.resolver';
 import { canDeactivateGuard } from './guards/can-deactivate.guard';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', loadComponent: () => import('../app/pages/home/home.component').then(c => c.HomeComponent) },
@@ -11,6 +12,7 @@ export const routes: Routes = [
   { path: 'jobs/:id', loadComponent: () => import('../app/pages/job/job.component').then(c => c.JobComponent), resolve: { job: jobResolver } },
   { path: 'about', loadComponent: () => import('../app/pages/about/about.component').then(c => c.AboutComponent) },
   { path: 'login', loadComponent: () => import('../app/pages/login/login.component').then(c => c.LoginComponent) },
+  { path: 'admin', loadComponent: () => import('../app/pages/admin/admin.component').then(c => c.AdminComponent), canActivate: [authGuard] },
   { path: 'error', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent },
 ];
