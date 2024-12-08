@@ -18,7 +18,7 @@
               Job</a>
             <a [routerLink]="['/about']" [routerLinkActive]="['bg-black']"
               class="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">About</a>
-            @if (authService.authenticatedUser()) {
+            @if (authService.getAuthenticatedUser() !== null) {
             <button type="button" class="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
               (click)="logoutUser()">Logout</button>
             } @else {

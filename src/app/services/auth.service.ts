@@ -36,10 +36,10 @@ export class AuthService {
   }
 
   getAuthenticatedUser() {
-    return this.authenticatedUser
+    return this.authenticatedUser()
   }
 
-  getIsAdminUser() {
+  IsAdminUser() {
     return this.authenticatedUser()?.role === 'admin'
   }
 }
