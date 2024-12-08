@@ -5,9 +5,9 @@ import { Job } from '../interfaces/job';
 
 export const jobResolver: ResolveFn<Job> = (route) => {
   const router = inject(Router)
-  const heroService = inject(JobsService)
+  const jobsService = inject(JobsService)
   try {
-    return heroService.getJobById(route.paramMap.get('id')!)
+    return jobsService.getJobById(route.paramMap.get('id')!)
   } catch {
     return new RedirectCommand(router.parseUrl('/'))
   }
