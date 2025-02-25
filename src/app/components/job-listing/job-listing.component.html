@@ -5,7 +5,7 @@
       <h3 class="text-xl font-bold" appHighlight>{{job().title}}</h3>
     </div>
 
-    <div class="mb-5">
+    <div class="mb-5" [@toggleDescription]="showFullDescription() ? 'more' : 'less'">
       {{description()}}
     </div>
 
